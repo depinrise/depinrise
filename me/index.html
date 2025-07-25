@@ -1,39 +1,63 @@
 <!DOCTYPE html>
-<html lang="id" class="light">
+<html lang="id" class="dark">
 <head>
-    <!-- META TAGS & SEO -->
+    <!-- 
+    ==================================================================
+    |                      BAGIAN META & HEAD                        |
+    ==================================================================
+    -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devin Ramadhan - Software Developer</title>
-    <meta name="description" content="Portofolio Devin Ramadhan, seorang pengembang perangkat lunak dan pembelajar mandiri dengan hasrat untuk menciptakan solusi yang elegan.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Devin Ramadhan - Software Developer & Creator</title>
+    <meta name="description" content="Portofolio Devin Ramadhan, seorang pengembang perangkat lunak otodidak yang menjelajahi persimpangan antara kode, desain, dan inovasi.">
     <meta name="author" content="Devin Ramadhan">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://depinrise-portfolio.example.com/">
-
-    <!-- Social Media Meta Tags -->
+    
+    <!-- Meta Tags untuk Social Media (Open Graph & Twitter) -->
     <meta property="og:title" content="Devin Ramadhan - Software Developer">
     <meta property="og:description" content="Jelajahi dunia kode dan kreativitas dari seorang pengembang otodidak.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://depinrise-portfolio.example.com/">
-    <meta property="og:image" content="https://placehold.co/1200x630/E1BEE7/333333?text=Devin+Ramadhan">
+    <meta property="og:image" content="https://placehold.co/1200x630/282638/B5A8E8?text=Devin+Ramadhan">
+    <meta name="twitter:card" content="summary_large_image">
     
-    <!-- FONTS & ICONS -->
+    <!-- Favicon -->
+    <link rel="icon" href="https://placehold.co/32x32/A69BDB/FFFFFF?text=D">
+    
+    <!-- Preconnect untuk Performa -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Font Styles: Inter & JetBrains Mono -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- JAVASCRIPT LIBRARIES -->
+    
+    <!-- Libraries: Tailwind CSS & Three.js -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 
-    <!-- CUSTOM STYLES (Pastel Theme) -->
+    <!-- 
+    ==================================================================
+    |                         BAGIAN CSS                             |
+    ==================================================================
+    -->
     <style>
+        /* Konfigurasi Variabel CSS untuk Tema Pastel */
         :root {
+            --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+            --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+            
             /* Warna Light Mode (Pastel) */
-            --bg-light: #F8F7FF; /* Lavender Blush */
-            --text-light: #3D3B56; /* Dark Purple */
-            --card-bg-light: rgba(255, 255, 255, 0.4);
+            --bg-light: #F8F7FF;
+            --text-light: #3D3B56;
+            --card-bg-light: rgba(255, 255, 255, 0.5);
             --border-light: rgba(194, 186, 222, 0.4);
             --shadow-light: rgba(120, 107, 179, 0.1);
             --accent-purple-light: #A69BDB;
@@ -41,16 +65,17 @@
             --accent-blue-light: #A0C4FF;
 
             /* Warna Dark Mode (Pastel) */
-            --bg-dark: #191825; /* Raisin Black */
-            --text-dark: #E0DDEF; /* Lavender Gray */
-            --card-bg-dark: rgba(40, 38, 56, 0.4);
+            --bg-dark: #191825;
+            --text-dark: #E0DDEF;
+            --card-bg-dark: rgba(40, 38, 56, 0.5);
             --border-dark: rgba(166, 155, 219, 0.2);
-            --shadow-dark: rgba(0, 0, 0, 0.2);
+            --shadow-dark: rgba(0, 0, 0, 0.25);
             --accent-purple-dark: #B5A8E8;
             --accent-pink-dark: #F8A5DE;
             --accent-blue-dark: #AECBFF;
         }
 
+        /* Terapkan Variabel Sesuai Tema */
         html.light {
             --bg-primary: var(--bg-light);
             --text-primary: var(--text-light);
@@ -75,65 +100,82 @@
             --accent-blue: var(--accent-blue-dark);
         }
 
+        /* Pengaturan Dasar & Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-primary);
-            transition: background-color 0.5s ease, color 0.5s ease;
+            transition: background-color 0.5s var(--ease-out-cubic), color 0.5s var(--ease-out-cubic);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--accent-purple);
+            border-radius: 4px;
+            border: 2px solid var(--bg-primary);
+        }
+
+        /* Latar Belakang 3D Canvas */
         #three-canvas {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
             z-index: -1;
             pointer-events: none;
         }
 
+        /* Efek Glassmorphism yang Disempurnakan */
         .glass-card {
             background-color: var(--card-bg);
-            backdrop-filter: blur(25px) saturate(150%);
-            -webkit-backdrop-filter: blur(25px) saturate(150%);
+            backdrop-filter: blur(30px) saturate(180%);
+            -webkit-backdrop-filter: blur(30px) saturate(180%);
             border: 1px solid var(--card-border);
             box-shadow: 0 8px 32px 0 var(--card-shadow);
             border-radius: 1.25rem; /* 20px */
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition: all 0.4s var(--ease-out-cubic);
         }
 
         .glass-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px 0 var(--card-shadow);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px 0 var(--card-shadow);
             border-color: var(--accent-purple);
         }
         
+        /* Tipografi */
         h1, h2, h3 {
             font-family: 'JetBrains Mono', monospace;
             font-weight: 700;
         }
         .text-secondary { color: var(--text-secondary); }
-        .text-accent-purple { color: var(--accent-purple); }
-        .text-accent-pink { color: var(--accent-pink); }
-        .text-accent-blue { color: var(--accent-blue); }
+        .text-gradient {
+            background: linear-gradient(45deg, var(--accent-pink), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
+        /* Animasi Scroll */
         .scroll-animate {
             opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(50px);
+            transition: opacity 1s var(--ease-out-cubic), transform 1s var(--ease-out-cubic);
         }
         .scroll-animate.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
         
+        /* Utilitas UI (Notifikasi, Loading, dll.) */
         #notification-banner {
-            position: fixed;
-            top: -100px;
-            left: 50%;
+            position: fixed; top: -100px; left: 50%;
             transform: translateX(-50%);
             background-color: var(--card-bg);
             backdrop-filter: blur(10px);
@@ -142,40 +184,97 @@
             padding: 0.75rem 1.5rem;
             border-radius: 0.75rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: top 0.5s ease-in-out;
+            transition: top 0.5s var(--ease-out-cubic);
             z-index: 1001;
             font-weight: 500;
         }
         #notification-banner.show { top: 1.5rem; }
 
         .loading-screen {
-            position: fixed;
-            top: 0; left: 0;
+            position: fixed; top: 0; left: 0;
             width: 100vw; height: 100vh;
             background-color: var(--bg-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
             z-index: 9999;
-            transition: opacity 0.8s ease;
+            transition: opacity 0.8s var(--ease-in-out-quad);
         }
         .loading-screen.fade-out { opacity: 0; pointer-events: none; }
+
+        /* Command Palette */
+        #command-palette-overlay {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s var(--ease-out-cubic);
+        }
+        #command-palette-overlay.visible { opacity: 1; pointer-events: all; }
+
+        #command-palette {
+            position: fixed; top: 25%; left: 50%;
+            transform: translate(-50%, -50%) scale(0.95);
+            width: 90%; max-width: 500px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 1rem;
+            box-shadow: 0 10px 50px var(--shadow-dark);
+            overflow: hidden;
+            transition: transform 0.3s var(--ease-out-cubic), opacity 0.3s var(--ease-out-cubic);
+            opacity: 0;
+        }
+        #command-palette-overlay.visible #command-palette { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+
+        #command-palette-input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            font-size: 1rem;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        #command-palette-list .item {
+            padding: 0.75rem 1.25rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: background-color 0.2s;
+        }
+        #command-palette-list .item.selected {
+            background-color: rgba(from var(--accent-purple) r g b / 0.2);
+        }
     </style>
 </head>
 
 <body class="min-h-screen">
-    <!-- Latar Belakang 3D -->
+    <!-- 
+    ==================================================================
+    |                         BAGIAN HTML                            |
+    ==================================================================
+    -->
+    <!-- PERBAIKAN: Mengganti div menjadi canvas -->
     <canvas id="three-canvas"></canvas>
 
-    <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
-        <i class="fas fa-satellite-dish text-accent-purple text-5xl animate-spin"></i>
+        <i class="fas fa-satellite-dish text-gradient text-5xl animate-spin"></i>
     </div>
 
-    <!-- Notifikasi -->
     <div id="notification-banner"></div>
 
-    <!-- Header -->
+    <!-- Command Palette Modal -->
+    <div id="command-palette-overlay">
+        <div id="command-palette" role="dialog" aria-modal="true">
+            <input type="text" id="command-palette-input" placeholder="Ketik perintah...">
+            <ul id="command-palette-list" role="listbox"></ul>
+        </div>
+    </div>
+
     <header class="fixed top-0 left-0 right-0 p-4 sm:p-6 flex justify-end items-center gap-3 z-50">
         <button id="lang-toggle" aria-label="Ganti Bahasa" class="glass-card w-16 text-sm font-semibold py-2 px-3 hover:!border-[var(--accent-purple)]">ID</button>
         <button id="theme-toggle" aria-label="Toggle theme" class="glass-card p-3 aspect-square flex items-center justify-center hover:!border-[var(--accent-purple)]">
@@ -183,23 +282,23 @@
         </button>
     </header>
 
-    <!-- Konten Utama -->
     <main class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
         <div class="space-y-24 md:space-y-32">
 
             <!-- BAGIAN 1: HERO -->
             <section id="hero" class="text-center flex flex-col items-center scroll-animate min-h-[60vh] justify-center">
                 <div class="glass-card w-28 h-28 mb-8 flex items-center justify-center p-2">
-                    <i class="fas fa-meteor text-6xl text-accent-purple"></i>
+                    <i class="fas fa-meteor text-6xl text-gradient"></i>
                 </div>
                 <h1 data-lang-key="hero_name" class="text-5xl md:text-7xl">Devin Ramadhan</h1>
                 <p data-lang-key="hero_subtitle" class="text-xl md:text-2xl text-secondary mt-4">Pengembang Perangkat Lunak & Pembelajar Mandiri</p>
+                <p class="text-sm text-secondary mt-8" data-lang-key="command_prompt">Tekan <kbd class="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">Ctrl+K</kbd> untuk perintah</p>
             </section>
 
             <!-- BAGIAN 2: TENTANG SAYA -->
             <section id="about" class="scroll-animate">
                 <div class="glass-card p-8 md:p-12">
-                    <h2 data-lang-key="about_title" class="text-3xl md:text-4xl mb-6">Tentang Saya</h2>
+                    <h2 data-lang-key="about_title" class="text-3xl md:text-4xl mb-6 text-gradient">Tentang Saya</h2>
                     <p data-lang-key="about_desc" class="text-lg md:text-xl text-secondary leading-relaxed">
                         Halo! Saya Depin, seorang programmer otodidak yang memulai perjalanan ini sejak 2017. Rasa ingin tahu adalah bahan bakar utama saya untuk terus belajar dan menjelajahi teknologi baru. Saya percaya pada kekuatan dedikasi dan kemungkinan tak terbatas yang datang dari pikiran yang selalu penasaran.
                     </p>
@@ -208,7 +307,7 @@
 
             <!-- BAGIAN 3: KEAHLIAN -->
             <section id="skills" class="scroll-animate">
-                <h2 data-lang-key="skills_title" class="text-3xl md:text-4xl text-center mb-12">Teknologi & Keahlian</h2>
+                <h2 data-lang-key="skills_title" class="text-3xl md:text-4xl text-center mb-12 text-gradient">Teknologi & Keahlian</h2>
                 <div id="skills-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
                     <!-- Kartu Keahlian akan dimasukkan oleh JS -->
                 </div>
@@ -231,7 +330,7 @@
 
             <!-- BAGIAN 5: KONTAK -->
             <section id="contact" class="text-center scroll-animate">
-                <h2 data-lang-key="contact_title" class="text-3xl md:text-4xl mb-4">Hubungi Saya</h2>
+                <h2 data-lang-key="contact_title" class="text-3xl md:text-4xl mb-4 text-gradient">Hubungi Saya</h2>
                 <p data-lang-key="contact_desc" class="text-lg text-secondary mb-8 max-w-2xl mx-auto">Terbuka untuk diskusi, pertanyaan, atau peluang kolaborasi. Jangan ragu untuk menghubungi!</p>
                 <div class="flex flex-wrap justify-center gap-4">
                     <a href="mailto:depinrise@proton.me" class="glass-card p-4 flex items-center gap-3 hover:!border-[var(--accent-purple)]">
@@ -244,14 +343,20 @@
     </main>
 
     <footer class="py-12 text-center text-secondary text-sm mt-16">
-        <p data-lang-key="footer_text">— Dibuat dengan <i class="fas fa-heart text-accent-pink"></i> oleh Devin Ramadhan —</p>
+        <p data-lang-key="footer_text">— Dibuat dengan <i class="fas fa-heart text-accent-pink animate-pulse"></i> oleh Devin Ramadhan —</p>
     </footer>
 
-    <!-- JAVASCRIPT UTAMA -->
+    <!-- 
+    ==================================================================
+    |                       BAGIAN JAVASCRIPT                        |
+    ==================================================================
+    -->
     <script>
+    // Pastikan semua berjalan setelah DOM siap
     document.addEventListener('DOMContentLoaded', () => {
+
         // ===================================================================================
-        // BAGIAN 1: STATE & ELEMEN
+        // BAGIAN 1: STATE, ELEMEN, DAN DATA
         // ===================================================================================
         const state = { currentLang: 'id', currentTheme: 'light' };
         const elements = {
@@ -262,224 +367,293 @@
             scrollAnimateItems: document.querySelectorAll('.scroll-animate'),
             skillsContainer: document.getElementById('skills-container'),
             threeCanvas: document.getElementById('three-canvas'),
-            loadingScreen: document.getElementById('loading-screen')
+            loadingScreen: document.getElementById('loading-screen'),
+            commandPalette: {
+                overlay: document.getElementById('command-palette-overlay'),
+                container: document.getElementById('command-palette'),
+                input: document.getElementById('command-palette-input'),
+                list: document.getElementById('command-palette-list')
+            }
         };
 
-        // ===================================================================================
-        // BAGIAN 2: DATA & KONTEN
-        // ===================================================================================
         const translations = {
             id: {
                 "lang_toggle": "EN", "hero_name": "Devin Ramadhan", "hero_subtitle": "Pengembang Perangkat Lunak & Pembelajar Mandiri",
                 "about_title": "Tentang Saya", "about_desc": "Halo! Saya Depin, seorang programmer otodidak yang memulai perjalanan ini sejak 2017. Rasa ingin tahu adalah bahan bakar utama saya untuk terus belajar dan menjelajahi teknologi baru. Saya percaya pada kekuatan dedikasi dan kemungkinan tak terbatas yang datang dari pikiran yang selalu penasaran.",
                 "skills_title": "Teknologi & Keahlian", "github_title": "Jelajahi Kode Saya", "github_desc": "Lihat semua proyek, eksperimen, dan kontribusi sumber terbuka saya di GitHub.",
                 "github_button": "depinrise", "contact_title": "Hubungi Saya", "contact_desc": "Terbuka untuk diskusi, pertanyaan, atau peluang kolaborasi. Jangan ragu untuk menghubungi!",
-                "footer_text": "— Dibuat dengan <i class='fas fa-heart text-accent-pink'></i> oleh Devin Ramadhan —", "notification_light": "Mode Cerah diaktifkan", "notification_dark": "Mode Gelap diaktifkan"
+                "footer_text": "— Dibuat dengan <i class='fas fa-heart text-accent-pink animate-pulse'></i> oleh Devin Ramadhan —", "notification_light": "Mode Cerah diaktifkan", "notification_dark": "Mode Gelap diaktifkan",
+                "command_prompt": "Tekan <kbd class='px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500'>Ctrl+K</kbd> untuk perintah"
             },
             en: {
                 "lang_toggle": "ID", "hero_name": "Devin Ramadhan", "hero_subtitle": "Software Developer & Self-Taught Learner",
                 "about_title": "About Me", "about_desc": "Hello! I'm Depin, a self-taught programmer who embarked on this journey in 2017. Curiosity is my main fuel for continuously learning and exploring new technologies. I believe in the power of dedication and the endless possibilities that come from an ever-curious mind.",
                 "skills_title": "Technologies & Skills", "github_title": "Explore My Code", "github_desc": "Check out all my projects, experiments, and open-source contributions on GitHub.",
                 "github_button": "depinrise", "contact_title": "Get In Touch", "contact_desc": "Open for discussions, questions, or collaboration opportunities. Feel free to reach out!",
-                "footer_text": "— Made with <i class='fas fa-heart text-accent-pink'></i> by Devin Ramadhan —", "notification_light": "Light Mode enabled", "notification_dark": "Dark Mode enabled"
+                "footer_text": "— Made with <i class='fas fa-heart text-accent-pink animate-pulse'></i> by Devin Ramadhan —", "notification_light": "Light Mode enabled", "notification_dark": "Dark Mode enabled",
+                "command_prompt": "Press <kbd class='px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500'>Ctrl+K</kbd> for commands"
             }
         };
 
         const skillsData = [
-            { name: 'Python', icon: 'fab fa-python', color: 'text-accent-blue' },
-            { name: 'Go', icon: 'fab fa-golang', color: 'text-accent-blue' },
-            { name: 'JavaScript', icon: 'fab fa-js-square', color: 'text-accent-pink' },
-            { name: 'Next.js', icon: 'fab fa-react', color: 'text-accent-pink' },
-            { name: 'CSS', icon: 'fab fa-css3-alt', color: 'text-accent-purple' },
-            { name: 'Bash', icon: 'fas fa-terminal', color: 'text-accent-purple' },
-            { name: 'Docker', icon: 'fab fa-docker', color: 'text-accent-blue' },
-            { name: 'C++', icon: 'fas fa-c', color: 'text-accent-pink' }
+            { name: 'Python', icon: 'fab fa-python', color: 'text-accent-blue' }, { name: 'Go', icon: 'fab fa-golang', color: 'text-accent-blue' },
+            { name: 'JavaScript', icon: 'fab fa-js-square', color: 'text-accent-pink' }, { name: 'Next.js', icon: 'fab fa-react', color: 'text-accent-pink' },
+            { name: 'CSS', icon: 'fab fa-css3-alt', color: 'text-accent-purple' }, { name: 'Bash', icon: 'fas fa-terminal', color: 'text-accent-purple' },
+            { name: 'Docker', icon: 'fab fa-docker', color: 'text-accent-blue' }, { name: 'C++', icon: 'fas fa-c', color: 'text-accent-pink' }
         ];
 
         // ===================================================================================
-        // BAGIAN 3: FUNGSI UTAMA
+        // BAGIAN 2: FUNGSI UTAMA & MANAJEMEN UI
         // ===================================================================================
-        function showNotification(message) {
-            elements.notificationBanner.textContent = message;
-            elements.notificationBanner.classList.add('show');
-            setTimeout(() => { elements.notificationBanner.classList.remove('show'); }, 3000);
-        }
-
-        function switchLanguage(lang) {
-            state.currentLang = lang;
-            document.querySelectorAll('[data-lang-key]').forEach(el => {
-                const key = el.getAttribute('data-lang-key');
-                if (translations[lang][key]) {
-                    el.innerHTML = translations[lang][key];
-                }
-            });
-            elements.langToggle.textContent = translations[lang]['lang_toggle'];
-            localStorage.setItem('portfolio_lang', lang);
-        }
-
-        function switchTheme(theme) {
-            state.currentTheme = theme;
-            elements.html.className = theme;
-            elements.themeToggle.innerHTML = `<i class="fas ${theme === 'light' ? 'fa-moon' : 'fa-sun'}"></i>`;
-            localStorage.setItem('portfolio_theme', theme);
-            if (window.updateSaturnColors) window.updateSaturnColors();
-        }
-
-        function populateSkills() {
-            if (!elements.skillsContainer) return;
-            elements.skillsContainer.innerHTML = '';
-            skillsData.forEach(skill => {
-                const card = document.createElement('div');
-                card.className = 'glass-card p-4 flex flex-col items-center justify-center gap-3 text-center';
-                card.innerHTML = `
-                    <i class="${skill.icon} text-4xl ${skill.color}"></i>
-                    <span class="font-medium text-secondary">${skill.name}</span>
-                `;
-                elements.skillsContainer.appendChild(card);
-            });
-        }
+        const uiManager = {
+            showNotification(message) {
+                elements.notificationBanner.textContent = message;
+                elements.notificationBanner.classList.add('show');
+                setTimeout(() => { elements.notificationBanner.classList.remove('show'); }, 3000);
+            },
+            switchLanguage(lang) {
+                state.currentLang = lang;
+                document.querySelectorAll('[data-lang-key]').forEach(el => {
+                    const key = el.getAttribute('data-lang-key');
+                    if (translations[lang][key]) el.innerHTML = translations[lang][key];
+                });
+                elements.langToggle.textContent = translations[lang]['lang_toggle'];
+                localStorage.setItem('portfolio_lang', lang);
+            },
+            switchTheme(theme) {
+                state.currentTheme = theme;
+                elements.html.className = theme;
+                elements.themeToggle.innerHTML = `<i class="fas ${theme === 'light' ? 'fa-moon' : 'fa-sun'}"></i>`;
+                localStorage.setItem('portfolio_theme', theme);
+                if (window.update3DColors) window.update3DColors();
+            },
+            populateSkills() {
+                if (!elements.skillsContainer) return;
+                elements.skillsContainer.innerHTML = '';
+                skillsData.forEach(skill => {
+                    const card = document.createElement('div');
+                    card.className = 'glass-card p-4 flex flex-col items-center justify-center gap-3 text-center';
+                    card.innerHTML = `<i class="${skill.icon} text-4xl ${skill.color}"></i><span class="font-medium text-secondary">${skill.name}</span>`;
+                    elements.skillsContainer.appendChild(card);
+                });
+            }
+        };
 
         // ===================================================================================
-        // BAGIAN 4: ANIMASI 3D PLANET SATURNUS
+        // BAGIAN 3: ANIMASI 3D (SATURNUS + PARTIKEL)
         // ===================================================================================
-        function initSaturnBackground() {
+        function init3DBackground() {
             if (!elements.threeCanvas) return;
 
-            let scene, camera, renderer, saturnGroup, stars;
+            let scene, camera, renderer, saturnGroup, stars, particleSystem;
             const mouse = new THREE.Vector2(0, 0);
 
             scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            camera.position.z = 5;
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
+            camera.position.z = 10;
 
-            renderer = new THREE.WebGLRenderer({
-                canvas: elements.threeCanvas,
-                alpha: true,
-                antialias: true
-            });
+            renderer = new THREE.WebGLRenderer({ canvas: elements.threeCanvas, alpha: true, antialias: true });
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-            // Membuat Grup untuk Saturnus (Planet + Cincin)
+            // Grup Saturnus
             saturnGroup = new THREE.Group();
             scene.add(saturnGroup);
 
-            // 1. Membuat Planet
-            const planetGeometry = new THREE.SphereGeometry(2, 32, 32);
+            // Planet
             const planetMaterial = new THREE.MeshStandardMaterial({
-                color: new THREE.Color(getComputedStyle(document.documentElement).getPropertyValue('--accent-pink').trim()),
-                metalness: 0.3,
-                roughness: 0.7
+                metalness: 0.3, roughness: 0.7 
             });
-            const planet = new THREE.Mesh(planetGeometry, planetMaterial);
+            const planet = new THREE.Mesh(new THREE.SphereGeometry(2, 64, 64), planetMaterial);
             saturnGroup.add(planet);
 
-            // 2. Membuat Cincin
-            const ringGeometry = new THREE.RingGeometry(2.8, 4, 64);
-            const pos = ringGeometry.attributes.position;
-            const v3 = new THREE.Vector3();
-            for (let i = 0; i < pos.count; i++){
-                v3.fromBufferAttribute(pos, i);
-                ringGeometry.attributes.uv.setXY(i, v3.length() < 3.4 ? 0 : 1, 1);
-            }
-            
+            // Cincin
             const ringMaterial = new THREE.MeshBasicMaterial({
-                color: new THREE.Color(getComputedStyle(document.documentElement).getPropertyValue('--accent-blue').trim()),
-                side: THREE.DoubleSide,
-                transparent: true,
-                opacity: 0.7
+                side: THREE.DoubleSide, transparent: true, opacity: 0.7
             });
-            const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+            const ring = new THREE.Mesh(new THREE.RingGeometry(2.8, 4, 64), ringMaterial);
             ring.rotation.x = Math.PI * 0.5;
             saturnGroup.add(ring);
-            
-            saturnGroup.rotation.x = 0.2; // Miringkan sedikit
+            saturnGroup.rotation.x = 0.25;
+            saturnGroup.rotation.z = -0.1;
 
-            // 3. Menambah Cahaya
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-            scene.add(ambientLight);
-            const pointLight = new THREE.PointLight(0xffffff, 1);
-            pointLight.position.set(5, 5, 5);
+            // Cahaya
+            scene.add(new THREE.AmbientLight(0xffffff, 0.7));
+            const pointLight = new THREE.PointLight(0xffffff, 1.2);
+            pointLight.position.set(10, 10, 10);
             scene.add(pointLight);
 
-            // 4. Membuat Latar Belakang Bintang
+            // Partikel Debu Kosmik
+            const particleCount = 1500;
+            const particlePositions = new Float32Array(particleCount * 3);
+            for (let i = 0; i < particleCount; i++) {
+                particlePositions[i * 3 + 0] = (Math.random() - 0.5) * 30;
+                particlePositions[i * 3 + 1] = (Math.random() - 0.5) * 30;
+                particlePositions[i * 3 + 2] = (Math.random() - 0.5) * 30;
+            }
+            const particleGeometry = new THREE.BufferGeometry();
+            particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+            const particleMaterial = new THREE.PointsMaterial({ size: 0.02, transparent: true });
+            particleSystem = new THREE.Points(particleGeometry, particleMaterial);
+            scene.add(particleSystem);
+            
+            // Bintang Jauh
             const starVertices = [];
             for (let i = 0; i < 10000; i++) {
                 const x = (Math.random() - 0.5) * 2000;
                 const y = (Math.random() - 0.5) * 2000;
-                const z = (Math.random() - 0.5) * 2000;
+                const z = -Math.random() * 2000;
                 starVertices.push(x, y, z);
             }
             const starGeometry = new THREE.BufferGeometry();
             starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
-            const starMaterial = new THREE.PointsMaterial({
-                color: 0xffffff,
-                size: 0.7,
-                transparent: true,
-                opacity: 0.7
-            });
+            const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.7 });
             stars = new THREE.Points(starGeometry, starMaterial);
             scene.add(stars);
 
-            // Fungsi untuk update warna saat tema berubah
-            window.updateSaturnColors = () => {
-                planetMaterial.color.set(getComputedStyle(document.documentElement).getPropertyValue('--accent-pink').trim());
-                ringMaterial.color.set(getComputedStyle(document.documentElement).getPropertyValue('--accent-blue').trim());
+            window.update3DColors = () => {
+                const style = getComputedStyle(document.documentElement);
+                planetMaterial.color.set(style.getPropertyValue('--accent-pink').trim());
+                ringMaterial.color.set(style.getPropertyValue('--accent-blue').trim());
+                particleMaterial.color.set(style.getPropertyValue('--accent-purple').trim());
             };
-            
-            function animate() {
-                requestAnimationFrame(animate);
-                saturnGroup.rotation.y += 0.001;
-                stars.rotation.y += 0.0001;
+            window.update3DColors();
 
-                camera.position.x += (mouse.x * 0.5 - camera.position.x) * 0.02;
-                camera.position.y += (-mouse.y * 0.5 - camera.position.y) * 0.02;
+            const clock = new THREE.Clock();
+            function animate() {
+                const elapsedTime = clock.getElapsedTime();
+                saturnGroup.rotation.y = elapsedTime * 0.1;
+                particleSystem.rotation.y = -elapsedTime * 0.05;
+                
+                gsap.to(camera.position, {
+                    x: mouse.x * 2,
+                    y: -mouse.y * 2,
+                    duration: 2,
+                    ease: 'power2.out'
+                });
                 camera.lookAt(scene.position);
 
                 renderer.render(scene, camera);
+                requestAnimationFrame(animate);
             }
 
-            function onWindowResize() {
+            window.addEventListener('resize', () => {
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
                 renderer.setSize(window.innerWidth, window.innerHeight);
-            }
-            
-            function onMouseMove(event) {
+            });
+            document.addEventListener('mousemove', (event) => {
                 mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
                 mouse.y = (event.clientY / window.innerHeight) * 2 - 1;
-            }
-
-            window.addEventListener('resize', onWindowResize);
-            document.addEventListener('mousemove', onMouseMove);
+            });
             animate();
         }
 
         // ===================================================================================
-        // BAGIAN 5: INISIALISASI
+        // BAGIAN 4: FITUR INTERAKTIF (COMMAND PALETTE)
+        // ===================================================================================
+        const commandManager = {
+            commands: [],
+            selectedIndex: -1,
+            init() {
+                this.commands = [
+                    { name: 'Home', action: () => this.scrollToSection('hero'), icon: 'fa-home' },
+                    { name: 'About', action: () => this.scrollToSection('about'), icon: 'fa-user' },
+                    { name: 'Skills', action: () => this.scrollToSection('skills'), icon: 'fa-code' },
+                    { name: 'GitHub', action: () => this.scrollToSection('github'), icon: 'fab fa-github' },
+                    { name: 'Contact', action: () => this.scrollToSection('contact'), icon: 'fa-envelope' },
+                    { name: 'Toggle Theme', action: () => elements.themeToggle.click(), icon: 'fa-adjust' },
+                    { name: 'Toggle Language', action: () => elements.langToggle.click(), icon: 'fa-globe' },
+                ];
+                elements.commandPalette.input.addEventListener('input', () => this.render());
+                elements.commandPalette.input.addEventListener('keydown', (e) => this.handleKeydown(e));
+                elements.commandPalette.overlay.addEventListener('click', (e) => {
+                    if (e.target === elements.commandPalette.overlay) this.close();
+                });
+            },
+            open() {
+                elements.commandPalette.overlay.classList.add('visible');
+                elements.commandPalette.input.focus();
+                this.render();
+            },
+            close() {
+                elements.commandPalette.overlay.classList.remove('visible');
+                elements.commandPalette.input.value = '';
+            },
+            render() {
+                const filter = elements.commandPalette.input.value.toLowerCase();
+                const filtered = this.commands.filter(c => c.name.toLowerCase().includes(filter));
+                elements.commandPalette.list.innerHTML = filtered.map((cmd, index) => `
+                    <li class="item" data-index="${index}">
+                        <i class="fas ${cmd.icon} w-4 text-center text-secondary"></i>
+                        <span>${cmd.name}</span>
+                    </li>
+                `).join('');
+                
+                elements.commandPalette.list.querySelectorAll('.item').forEach(item => {
+                    item.addEventListener('click', () => {
+                        filtered[parseInt(item.dataset.index)].action();
+                        this.close();
+                    });
+                });
+                this.selectedIndex = -1;
+                this.updateSelection();
+            },
+            handleKeydown(e) {
+                const items = elements.commandPalette.list.querySelectorAll('.item');
+                if (!items.length) return;
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    this.selectedIndex = (this.selectedIndex + 1) % items.length;
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    this.selectedIndex = (this.selectedIndex - 1 + items.length) % items.length;
+                } else if (e.key === 'Enter' && this.selectedIndex > -1) {
+                    items[this.selectedIndex].click();
+                } else if (e.key === 'Escape') {
+                    this.close();
+                }
+                this.updateSelection();
+            },
+            updateSelection() {
+                elements.commandPalette.list.querySelectorAll('.item').forEach((item, index) => {
+                    item.classList.toggle('selected', index === this.selectedIndex);
+                });
+            },
+            scrollToSection(id) {
+                const target = document.getElementById(id);
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                }
+            }
+        };
+
+        // ===================================================================================
+        // BAGIAN 5: INISIALISASI UTAMA
         // ===================================================================================
         function initialize() {
-            // Sembunyikan konten sampai loading selesai
             document.body.style.opacity = 0;
 
-            const savedTheme = localStorage.getItem('portfolio_theme') || 'light';
-            switchTheme(savedTheme);
+            const savedTheme = localStorage.getItem('portfolio_theme') || 'dark';
+            uiManager.switchTheme(savedTheme);
 
             const savedLang = localStorage.getItem('portfolio_lang') || 'id';
-            switchLanguage(savedLang);
+            uiManager.switchLanguage(savedLang);
             
-            populateSkills();
-            initSaturnBackground();
+            uiManager.populateSkills();
+            init3DBackground();
+            commandManager.init();
 
             elements.themeToggle.addEventListener('click', () => {
                 const newTheme = state.currentTheme === 'light' ? 'dark' : 'light';
-                switchTheme(newTheme);
-                showNotification(translations[state.currentLang][`notification_${newTheme}`]);
+                uiManager.switchTheme(newTheme);
+                uiManager.showNotification(translations[state.currentLang][`notification_${newTheme}`]);
             });
 
             elements.langToggle.addEventListener('click', () => {
                 const newLang = state.currentLang === 'id' ? 'en' : 'id';
-                switchLanguage(newLang);
+                uiManager.switchLanguage(newLang);
             });
 
             const scrollObserver = new IntersectionObserver((entries) => {
@@ -489,11 +663,16 @@
                         scrollObserver.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.1 });
-
+            }, { threshold: 0.15 });
             elements.scrollAnimateItems.forEach(el => scrollObserver.observe(el));
+            
+            document.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                    e.preventDefault();
+                    commandManager.open();
+                }
+            });
 
-            // Tampilkan halaman setelah semua siap
             window.addEventListener('load', () => {
                 setTimeout(() => {
                     elements.loadingScreen.classList.add('fade-out');
