@@ -1,0 +1,427 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Skills from '../components/Skills.astro';
+import GitHub from '../components/GitHub.astro';
+import Contact from '../components/Contact.astro';
+import LoadingScreen from '../components/LoadingScreen.astro';
+import NotificationBanner from '../components/NotificationBanner.astro';
+import CommandPalette from '../components/CommandPalette.astro';
+---
+<!DOCTYPE html>
+<html lang="id" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Devin Ramadhan - Software Developer & Creator</title>
+    <meta name="description" content="Portofolio Devin Ramadhan, seorang pengembang perangkat lunak otodidak yang menjelajahi persimpangan antara kode, desain, dan inovasi." />
+    <meta name="author" content="Devin Ramadhan" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://depinrise-portfolio.example.com/" />
+    <meta property="og:title" content="Devin Ramadhan - Software Developer" />
+    <meta property="og:description" content="Jelajahi dunia kode dan kreativitas dari seorang pengembang otodidak." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://depinrise-portfolio.example.com/" />
+    <meta property="og:image" content="https://placehold.co/1200x630/282638/B5A8E8?text=Devin+Ramadhan" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="https://placehold.co/32x32/A69BDB/FFFFFF?text=D" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #F8F7FF;
+        color: #3D3B56;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color: #B5A8E8;
+        border-radius: 4px;
+        border: 2px solid #F8F7FF;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen">
+    <canvas id="three-canvas" class="fixed top-0 left-0 w-screen h-screen z-[-1] pointer-events-none"></canvas>
+    <LoadingScreen />
+    <NotificationBanner />
+    <CommandPalette />
+    <Header />
+    <main class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 space-y-24 md:space-y-32">
+      <Hero />
+      <About />
+      <Skills />
+      <GitHub />
+      <Contact />
+    </main>
+    <Footer />
+    <script type="module" is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        const state = { currentLang: 'id', currentTheme: 'light' };
+        const elements = {
+          html: document.documentElement,
+          themeToggle: document.getElementById('theme-toggle'),
+          langToggle: document.getElementById('lang-toggle'),
+          notificationBanner: document.getElementById('notification-banner'),
+          scrollAnimateItems: document.querySelectorAll('.scroll-animate'),
+          skillsContainer: document.getElementById('skills-container'),
+          threeCanvas: document.getElementById('three-canvas'),
+          loadingScreen: document.getElementById('loading-screen'),
+          commandPalette: {
+            overlay: document.getElementById('command-palette-overlay'),
+            container: document.getElementById('command-palette'),
+            input: document.getElementById('command-palette-input'),
+            list: document.getElementById('command-palette-list')
+          }
+        };
+
+        const translations = {
+          id: {
+            lang_toggle: 'EN',
+            hero_name: 'Devin Ramadhan',
+            hero_subtitle: 'Pengembang Perangkat Lunak & Pembelajar Mandiri',
+            about_title: 'Tentang Saya',
+            about_desc:
+              'Halo! Saya Depin, seorang programmer otodidak yang memulai perjalanan ini sejak 2017. Rasa ingin tahu adalah bahan bakar utama saya untuk terus belajar dan menjelajahi teknologi baru. Saya percaya pada kekuatan dedikasi dan kemungkinan tak terbatas yang datang dari pikiran yang selalu penasaran.',
+            skills_title: 'Teknologi & Keahlian',
+            github_title: 'Jelajahi Kode Saya',
+            github_desc: 'Lihat semua proyek, eksperimen, dan kontribusi sumber terbuka saya di GitHub.',
+            github_button: 'depinrise',
+            contact_title: 'Hubungi Saya',
+            contact_desc: 'Terbuka untuk diskusi, pertanyaan, atau peluang kolaborasi. Jangan ragu untuk menghubungi!',
+            footer_text: '— Dibuat dengan <i class="fas fa-heart text-pastel-pink animate-pulse"></i> oleh Devin Ramadhan —',
+            notification_light: 'Mode Cerah diaktifkan',
+            notification_dark: 'Mode Gelap diaktifkan',
+            command_prompt:
+              'Tekan <kbd class="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">Ctrl+K</kbd> untuk perintah'
+          },
+          en: {
+            lang_toggle: 'ID',
+            hero_name: 'Devin Ramadhan',
+            hero_subtitle: 'Software Developer & Self-Taught Learner',
+            about_title: 'About Me',
+            about_desc:
+              "Hello! I'm Depin, a self-taught programmer who embarked on this journey in 2017. Curiosity is my main fuel for continuously learning and exploring new technologies. I believe in the power of dedication and the endless possibilities that come from an ever-curious mind.",
+            skills_title: 'Technologies & Skills',
+            github_title: 'Explore My Code',
+            github_desc: 'Check out all my projects, experiments, and open-source contributions on GitHub.',
+            github_button: 'depinrise',
+            contact_title: 'Get In Touch',
+            contact_desc: 'Open for discussions, questions, or collaboration opportunities. Feel free to reach out!',
+            footer_text: '— Made with <i class="fas fa-heart text-pastel-pink animate-pulse"></i> by Devin Ramadhan —',
+            notification_light: 'Light Mode enabled',
+            notification_dark: 'Dark Mode enabled',
+            command_prompt:
+              'Press <kbd class="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">Ctrl+K</kbd> for commands'
+          }
+        };
+
+        const skillsData = [
+          { name: 'Python', icon: 'fab fa-python', color: 'text-pastel-blue' },
+          { name: 'Go', icon: 'fab fa-golang', color: 'text-pastel-blue' },
+          { name: 'JavaScript', icon: 'fab fa-js-square', color: 'text-pastel-pink' },
+          { name: 'Next.js', icon: 'fab fa-react', color: 'text-pastel-pink' },
+          { name: 'CSS', icon: 'fab fa-css3-alt', color: 'text-pastel-purple' },
+          { name: 'Bash', icon: 'fas fa-terminal', color: 'text-pastel-purple' },
+          { name: 'Docker', icon: 'fab fa-docker', color: 'text-pastel-blue' },
+          { name: 'C++', icon: 'fas fa-c', color: 'text-pastel-pink' }
+        ];
+
+        const uiManager = {
+          showNotification(message) {
+            elements.notificationBanner.textContent = message;
+            elements.notificationBanner.classList.add('show');
+            setTimeout(() => {
+              elements.notificationBanner.classList.remove('show');
+            }, 3000);
+          },
+          switchLanguage(lang) {
+            state.currentLang = lang;
+            document.querySelectorAll('[data-lang-key]').forEach((el) => {
+              const key = el.getAttribute('data-lang-key');
+              if (translations[lang][key]) el.innerHTML = translations[lang][key];
+            });
+            elements.langToggle.textContent = translations[lang]['lang_toggle'];
+            localStorage.setItem('portfolio_lang', lang);
+          },
+          switchTheme(theme) {
+            state.currentTheme = theme;
+            elements.html.className = theme;
+            elements.themeToggle.innerHTML = `<i class="fas ${theme === 'light' ? 'fa-moon' : 'fa-sun'}"></i>`;
+            localStorage.setItem('portfolio_theme', theme);
+            if (window.update3DColors) window.update3DColors();
+          },
+          populateSkills() {
+            if (!elements.skillsContainer) return;
+            elements.skillsContainer.innerHTML = '';
+            skillsData.forEach((skill) => {
+              const card = document.createElement('div');
+              card.className = 'glass-card p-4 flex flex-col items-center justify-center gap-3 text-center';
+              card.innerHTML = `<i class="${skill.icon} text-4xl ${skill.color}"></i><span class="font-medium text-pastel-text-light">${skill.name}</span>`;
+              elements.skillsContainer.appendChild(card);
+            });
+          }
+        };
+
+        function init3DBackground() {
+          if (!elements.threeCanvas) return;
+
+          let scene, camera, renderer, saturnGroup, stars, particleSystem;
+          const mouse = new THREE.Vector2(0, 0);
+
+          scene = new THREE.Scene();
+          camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
+          camera.position.z = 10;
+
+          renderer = new THREE.WebGLRenderer({ canvas: elements.threeCanvas, alpha: true, antialias: true });
+          renderer.setSize(window.innerWidth, window.innerHeight);
+          renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+          saturnGroup = new THREE.Group();
+          scene.add(saturnGroup);
+
+          const planetMaterial = new THREE.MeshStandardMaterial({
+            metalness: 0.3,
+            roughness: 0.7
+          });
+          const planet = new THREE.Mesh(new THREE.SphereGeometry(2, 64, 64), planetMaterial);
+          saturnGroup.add(planet);
+
+          const ringMaterial = new THREE.MeshBasicMaterial({
+            side: THREE.DoubleSide,
+            transparent: true,
+            opacity: 0.7
+          });
+          const ring = new THREE.Mesh(new THREE.RingGeometry(2.8, 4, 64), ringMaterial);
+          ring.rotation.x = Math.PI * 0.5;
+          saturnGroup.add(ring);
+          saturnGroup.rotation.x = 0.25;
+          saturnGroup.rotation.z = -0.1;
+
+          scene.add(new THREE.AmbientLight(0xffffff, 0.7));
+          const pointLight = new THREE.PointLight(0xffffff, 1.2);
+          pointLight.position.set(10, 10, 10);
+          scene.add(pointLight);
+
+          const particleCount = 1500;
+          const particlePositions = new Float32Array(particleCount * 3);
+          for (let i = 0; i < particleCount; i++) {
+            particlePositions[i * 3 + 0] = (Math.random() - 0.5) * 30;
+            particlePositions[i * 3 + 1] = (Math.random() - 0.5) * 30;
+            particlePositions[i * 3 + 2] = (Math.random() - 0.5) * 30;
+          }
+          const particleGeometry = new THREE.BufferGeometry();
+          particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+          const particleMaterial = new THREE.PointsMaterial({ size: 0.02, transparent: true });
+          particleSystem = new THREE.Points(particleGeometry, particleMaterial);
+          scene.add(particleSystem);
+
+          const starVertices = [];
+          for (let i = 0; i < 10000; i++) {
+            const x = (Math.random() - 0.5) * 2000;
+            const y = (Math.random() - 0.5) * 2000;
+            const z = -Math.random() * 2000;
+            starVertices.push(x, y, z);
+          }
+          const starGeometry = new THREE.BufferGeometry();
+          starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
+          const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.7 });
+          stars = new THREE.Points(starGeometry, starMaterial);
+          scene.add(stars);
+
+          window.update3DColors = () => {
+            const style = getComputedStyle(document.documentElement);
+            planetMaterial.color.set(style.getPropertyValue('--accent-pink').trim());
+            ringMaterial.color.set(style.getPropertyValue('--accent-blue').trim());
+            particleMaterial.color.set(style.getPropertyValue('--accent-purple').trim());
+          };
+          window.update3DColors();
+
+          const clock = new THREE.Clock();
+          function animate() {
+            const elapsedTime = clock.getElapsedTime();
+            saturnGroup.rotation.y = elapsedTime * 0.1;
+            particleSystem.rotation.y = -elapsedTime * 0.05;
+
+            gsap.to(camera.position, {
+              x: mouse.x * 2,
+              y: -mouse.y * 2,
+              duration: 2,
+              ease: 'power2.out'
+            });
+            camera.lookAt(scene.position);
+
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+          }
+
+          window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+          });
+          document.addEventListener('mousemove', (event) => {
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = (event.clientY / window.innerHeight) * 2 - 1;
+          });
+          animate();
+        }
+
+        const commandManager = {
+          commands: [],
+          selectedIndex: -1,
+          init() {
+            this.commands = [
+              { name: 'Home', action: () => this.scrollToSection('hero'), icon: 'fa-home' },
+              { name: 'About', action: () => this.scrollToSection('about'), icon: 'fa-user' },
+              { name: 'Skills', action: () => this.scrollToSection('skills'), icon: 'fa-code' },
+              { name: 'GitHub', action: () => this.scrollToSection('github'), icon: 'fab fa-github' },
+              { name: 'Contact', action: () => this.scrollToSection('contact'), icon: 'fa-envelope' },
+              { name: 'Toggle Theme', action: () => elements.themeToggle.click(), icon: 'fa-adjust' },
+              { name: 'Toggle Language', action: () => elements.langToggle.click(), icon: 'fa-globe' }
+            ];
+            elements.commandPalette.input.addEventListener('input', () => this.render());
+            elements.commandPalette.input.addEventListener('keydown', (e) => this.handleKeydown(e));
+            elements.commandPalette.overlay.addEventListener('click', (e) => {
+              if (e.target === elements.commandPalette.overlay) this.close();
+            });
+          },
+          open() {
+            elements.commandPalette.overlay.classList.add('visible');
+            elements.commandPalette.input.focus();
+            this.render();
+          },
+          close() {
+            elements.commandPalette.overlay.classList.remove('visible');
+            elements.commandPalette.input.value = '';
+          },
+          render() {
+            const filter = elements.commandPalette.input.value.toLowerCase();
+            const filtered = this.commands.filter((c) => c.name.toLowerCase().includes(filter));
+            elements.commandPalette.list.innerHTML = filtered
+              .map(
+                (cmd, index) => `
+                    <li class="item" data-index="${index}">
+                        <i class="fas ${cmd.icon} w-4 text-center text-pastel-text-light"></i>
+                        <span>${cmd.name}</span>
+                    </li>
+                `
+              )
+              .join('');
+            elements.commandPalette.list.querySelectorAll('.item').forEach((item) => {
+              item.addEventListener('click', () => {
+                filtered[parseInt(item.dataset.index)].action();
+                this.close();
+              });
+            });
+            this.selectedIndex = -1;
+            this.updateSelection();
+          },
+          handleKeydown(e) {
+            const items = elements.commandPalette.list.querySelectorAll('.item');
+            if (!items.length) return;
+            if (e.key === 'ArrowDown') {
+              e.preventDefault();
+              this.selectedIndex = (this.selectedIndex + 1) % items.length;
+            } else if (e.key === 'ArrowUp') {
+              e.preventDefault();
+              this.selectedIndex = (this.selectedIndex - 1 + items.length) % items.length;
+            } else if (e.key === 'Enter' && this.selectedIndex > -1) {
+              items[this.selectedIndex].click();
+            } else if (e.key === 'Escape') {
+              this.close();
+            }
+            this.updateSelection();
+          },
+          updateSelection() {
+            elements.commandPalette.list.querySelectorAll('.item').forEach((item, index) => {
+              item.classList.toggle('selected', index === this.selectedIndex);
+            });
+          },
+          scrollToSection(id) {
+            const target = document.getElementById(id);
+            if (target) {
+              const offsetTop = target.offsetTop - 80;
+              window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+            }
+          }
+        };
+
+        function initialize() {
+          document.body.style.opacity = 0;
+
+          const savedTheme = localStorage.getItem('portfolio_theme') || 'light';
+          uiManager.switchTheme(savedTheme);
+
+          const savedLang = localStorage.getItem('portfolio_lang') || 'id';
+          uiManager.switchLanguage(savedLang);
+
+          uiManager.populateSkills();
+          init3DBackground();
+          commandManager.init();
+
+          elements.themeToggle.addEventListener('click', () => {
+            const newTheme = state.currentTheme === 'light' ? 'dark' : 'light';
+            uiManager.switchTheme(newTheme);
+            uiManager.showNotification(translations[state.currentLang][`notification_${newTheme}`]);
+          });
+
+          elements.langToggle.addEventListener('click', () => {
+            const newLang = state.currentLang === 'id' ? 'en' : 'id';
+            uiManager.switchLanguage(newLang);
+          });
+
+          const scrollObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('is-visible');
+                  scrollObserver.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.15 }
+          );
+          elements.scrollAnimateItems.forEach((el) => scrollObserver.observe(el));
+
+          document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+              e.preventDefault();
+              commandManager.open();
+            }
+          });
+
+          window.addEventListener('load', () => {
+            setTimeout(() => {
+              elements.loadingScreen.classList.add('fade-out');
+              document.body.style.transition = 'opacity 0.8s ease';
+              document.body.style.opacity = 1;
+            }, 500);
+          });
+        }
+
+        initialize();
+      });
+    </script>
+  </body>
+</html>

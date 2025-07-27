@@ -1,0 +1,23 @@
+---
+const skillsData = [
+  { name: 'Python', icon: 'fab fa-python', color: 'text-pastel-blue' },
+  { name: 'Go', icon: 'fab fa-golang', color: 'text-pastel-blue' },
+  { name: 'JavaScript', icon: 'fab fa-js-square', color: 'text-pastel-pink' },
+  { name: 'Next.js', icon: 'fab fa-react', color: 'text-pastel-pink' },
+  { name: 'CSS', icon: 'fab fa-css3-alt', color: 'text-pastel-purple' },
+  { name: 'Bash', icon: 'fas fa-terminal', color: 'text-pastel-purple' },
+  { name: 'Docker', icon: 'fab fa-docker', color: 'text-pastel-blue' },
+  { name: 'C++', icon: 'fas fa-c', color: 'text-pastel-pink' }
+];
+---
+<section id="skills" class="scroll-animate">
+  <h2 class="text-3xl md:text-4xl text-center mb-12 bg-gradient-to-r from-pastel-pink via-pastel-purple to-pastel-pink bg-clip-text text-transparent font-bold">Teknologi & Keahlian</h2>
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+    {skillsData.map(skill => (
+      <div class="glass-card p-4 flex flex-col items-center justify-center gap-3 text-center" key={skill.name}>
+        <i class={`${skill.icon} text-4xl ${skill.color}`}></i>
+        <span class="font-medium text-pastel-text-light">{skill.name}</span>
+      </div>
+    ))}
+  </div>
+</section>
