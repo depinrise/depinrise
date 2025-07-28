@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="id" class="dark">
 <head>
-    <!-- 
-    ==================================================================
-    |                      BAGIAN META & HEAD                        |
-    ==================================================================
-    -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,223 +9,365 @@
     <meta name="description" content="Portofolio Devin Ramadhan, seorang pengembang perangkat lunak otodidak yang menjelajahi persimpangan antara kode, desain, dan inovasi.">
     <meta name="author" content="Devin Ramadhan">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://depinrise-portfolio.example.com/">
     
-    <!-- Meta Tags untuk Social Media (Open Graph & Twitter) -->
+    <!-- Meta Tags untuk Social Media -->
     <meta property="og:title" content="Devin Ramadhan - Software Developer">
     <meta property="og:description" content="Jelajahi dunia kode dan kreativitas dari seorang pengembang otodidak.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://depinrise-portfolio.example.com/">
     <meta property="og:image" content="https://placehold.co/1200x630/282638/B5A8E8?text=Devin+Ramadhan">
     <meta name="twitter:card" content="summary_large_image">
     
     <!-- Favicon -->
     <link rel="icon" href="https://placehold.co/32x32/A69BDB/FFFFFF?text=D">
     
-    <!-- Preconnect untuk Performa -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    
-    <!-- Font Styles: Inter & JetBrains Mono -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    <!-- Libraries: Tailwind CSS & Three.js -->
+    <!-- Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 
-    <!-- 
-    ==================================================================
-    |                         BAGIAN CSS                             |
-    ==================================================================
-    -->
     <style>
-        /* Konfigurasi Variabel CSS untuk Tema Pastel */
+        /* Enhanced CSS Variables */
         :root {
             --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
             --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
             
-            /* Warna Light Mode (Pastel) */
-            --bg-light: #F8F7FF;
-            --text-light: #3D3B56;
-            --card-bg-light: rgba(255, 255, 255, 0.5);
-            --border-light: rgba(194, 186, 222, 0.4);
-            --shadow-light: rgba(120, 107, 179, 0.1);
-            --accent-purple-light: #A69BDB;
-            --accent-pink-light: #FBC2EB;
-            --accent-blue-light: #A0C4FF;
-
-            /* Warna Dark Mode (Pastel) */
-            --bg-dark: #191825;
-            --text-dark: #E0DDEF;
-            --card-bg-dark: rgba(40, 38, 56, 0.5);
-            --border-dark: rgba(166, 155, 219, 0.2);
-            --shadow-dark: rgba(0, 0, 0, 0.25);
-            --accent-purple-dark: #B5A8E8;
-            --accent-pink-dark: #F8A5DE;
-            --accent-blue-dark: #AECBFF;
+            /* Light Mode Colors */
+            --bg-light: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --text-light: #2d3748;
+            --card-bg-light: rgba(255, 255, 255, 0.05);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --shadow-light: rgba(102, 126, 234, 0.1);
+            
+            /* Dark Mode Colors */
+            --bg-dark: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            --text-dark: #e2e8f0;
+            --card-bg-dark: rgba(255, 255, 255, 0.02);
+            --border-dark: rgba(255, 255, 255, 0.05);
+            --shadow-dark: rgba(0, 0, 0, 0.3);
         }
 
-        /* Terapkan Variabel Sesuai Tema */
+        /* Theme Application */
         html.light {
             --bg-primary: var(--bg-light);
             --text-primary: var(--text-light);
-            --text-secondary: #786BB3;
+            --text-secondary: #4a5568;
             --card-bg: var(--card-bg-light);
             --card-border: var(--border-light);
             --card-shadow: var(--shadow-light);
-            --accent-purple: var(--accent-purple-light);
-            --accent-pink: var(--accent-pink-light);
-            --accent-blue: var(--accent-blue-light);
         }
 
         html.dark {
             --bg-primary: var(--bg-dark);
             --text-primary: var(--text-dark);
-            --text-secondary: #A69BDB;
+            --text-secondary: #a0aec0;
             --card-bg: var(--card-bg-dark);
             --card-border: var(--border-dark);
             --card-shadow: var(--shadow-dark);
-            --accent-purple: var(--accent-purple-dark);
-            --accent-pink: var(--accent-pink-dark);
-            --accent-blue: var(--accent-blue-dark);
         }
 
-        /* Pengaturan Dasar & Smooth Scrolling */
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         html {
             scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-primary);
+            background: var(--bg-primary);
             color: var(--text-primary);
-            transition: background-color 0.5s var(--ease-out-cubic), color 0.5s var(--ease-out-cubic);
+            min-height: 100vh;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            transition: all 0.5s var(--ease-out-cubic);
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb {
-            background-color: var(--accent-purple);
-            border-radius: 4px;
-            border: 2px solid var(--bg-primary);
-        }
-
-        /* Latar Belakang 3D Canvas */
-        #three-canvas {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* Efek Glassmorphism yang Disempurnakan */
-        .glass-card {
-            background-color: var(--card-bg);
-            backdrop-filter: blur(30px) saturate(180%);
-            -webkit-backdrop-filter: blur(30px) saturate(180%);
-            border: 1px solid var(--card-border);
-            box-shadow: 0 8px 32px 0 var(--card-shadow);
-            border-radius: 1.25rem; /* 20px */
+        /* Enhanced Liquid Glass Effects */
+        .liquid-glass {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.05) 50%,
+                rgba(255, 255, 255, 0.02) 100%);
+            backdrop-filter: blur(25px) saturate(200%);
+            -webkit-backdrop-filter: blur(25px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            box-shadow: 
+                0 8px 32px 0 rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.1),
+                0 1px 0 0 rgba(255, 255, 255, 0.05);
             transition: all 0.4s var(--ease-out-cubic);
+            position: relative;
+            overflow: hidden;
         }
 
-        .glass-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 50px 0 var(--card-shadow);
-            border-color: var(--accent-purple);
+        .liquid-glass::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.1) 50%, 
+                transparent 100%);
+            transition: left 0.6s ease;
         }
-        
-        /* Tipografi */
+
+        .liquid-glass:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(102, 126, 234, 0.3);
+            box-shadow: 
+                0 20px 60px 0 rgba(102, 126, 234, 0.2),
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+                0 1px 0 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .liquid-glass:hover::before {
+            left: 100%;
+        }
+
+        /* Typography */
         h1, h2, h3 {
             font-family: 'JetBrains Mono', monospace;
             font-weight: 700;
         }
-        .text-secondary { color: var(--text-secondary); }
+
         .text-gradient {
-            background: linear-gradient(45deg, var(--accent-pink), var(--accent-purple));
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        /* Animasi Scroll */
+        /* 3D Canvas Background */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Background Effects */
+        .background-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                rgba(102, 126, 234, 0.03) 0%, 
+                rgba(118, 75, 162, 0.03) 25%, 
+                rgba(240, 147, 251, 0.03) 50%, 
+                rgba(245, 87, 108, 0.03) 75%, 
+                rgba(79, 172, 254, 0.03) 100%);
+            background-size: 400% 400%;
+            animation: gradientFlow 20s ease infinite;
+            z-index: -2;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Sphere Effects */
+        .sphere-glow {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, 
+                rgba(102, 126, 234, 0.1) 0%, 
+                rgba(240, 147, 251, 0.08) 30%,
+                rgba(79, 172, 254, 0.05) 50%,
+                transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: glowPulse 12s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { 
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.3;
+            }
+            50% { 
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 0.6;
+            }
+        }
+
+        /* Floating Particles */
+        .particle {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particleFloat 15s linear infinite;
+            z-index: -1;
+        }
+
+        .particle:nth-child(1) {
+            width: 6px; height: 6px;
+            top: 20%; right: 20%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.8) 0%, transparent 70%);
+            animation-delay: 0s;
+        }
+
+        .particle:nth-child(2) {
+            width: 8px; height: 8px;
+            top: 60%; right: 80%;
+            background: radial-gradient(circle, rgba(240, 147, 251, 0.8) 0%, transparent 70%);
+            animation-delay: 3s;
+        }
+
+        .particle:nth-child(3) {
+            width: 4px; height: 4px;
+            top: 40%; right: 10%;
+            background: radial-gradient(circle, rgba(79, 172, 254, 0.8) 0%, transparent 70%);
+            animation-delay: 6s;
+        }
+
+        .particle:nth-child(4) {
+            width: 7px; height: 7px;
+            top: 80%; right: 60%;
+            background: radial-gradient(circle, rgba(118, 75, 162, 0.8) 0%, transparent 70%);
+            animation-delay: 9s;
+        }
+
+        @keyframes particleFloat {
+            0% { 
+                transform: translateY(0px) translateX(0px) scale(1) rotate(0deg); 
+                opacity: 0; 
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { 
+                transform: translateY(-200px) translateX(50px) scale(0) rotate(360deg); 
+                opacity: 0; 
+            }
+        }
+
+        /* Scroll Animation */
         .scroll-animate {
             opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1s var(--ease-out-cubic), transform 1s var(--ease-out-cubic);
+            transform: translateY(60px);
+            transition: all 1.2s var(--ease-out-cubic);
         }
+
         .scroll-animate.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
-        
-        /* Utilitas UI (Notifikasi, Loading, dll.) */
+
+        /* UI Components */
         #notification-banner {
-            position: fixed; top: -100px; left: 50%;
+            position: fixed;
+            top: -100px;
+            left: 50%;
             transform: translateX(-50%);
-            background-color: var(--card-bg);
-            backdrop-filter: blur(10px);
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
             border: 1px solid var(--card-border);
             color: var(--text-primary);
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             transition: top 0.5s var(--ease-out-cubic);
             z-index: 1001;
             font-weight: 500;
         }
-        #notification-banner.show { top: 1.5rem; }
+
+        #notification-banner.show {
+            top: 2rem;
+        }
 
         .loading-screen {
-            position: fixed; top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            background-color: var(--bg-primary);
-            display: flex; align-items: center; justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             z-index: 9999;
-            transition: opacity 0.8s var(--ease-in-out-quad);
+            transition: opacity 1s var(--ease-in-out-quad);
         }
-        .loading-screen.fade-out { opacity: 0; pointer-events: none; }
+
+        .loading-screen.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
 
         /* Command Palette */
         #command-palette-overlay {
-            position: fixed; top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.3);
-            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(12px);
             z-index: 2000;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.3s var(--ease-out-cubic);
         }
-        #command-palette-overlay.visible { opacity: 1; pointer-events: all; }
+
+        #command-palette-overlay.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
 
         #command-palette {
-            position: fixed; top: 25%; left: 50%;
-            transform: translate(-50%, -50%) scale(0.95);
-            width: 90%; max-width: 500px;
-            background-color: var(--card-bg);
+            position: fixed;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            width: 90%;
+            max-width: 500px;
+            background: var(--card-bg);
+            backdrop-filter: blur(25px);
             border: 1px solid var(--card-border);
-            border-radius: 1rem;
-            box-shadow: 0 10px 50px var(--shadow-dark);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             overflow: hidden;
-            transition: transform 0.3s var(--ease-out-cubic), opacity 0.3s var(--ease-out-cubic);
+            transition: all 0.3s var(--ease-out-cubic);
             opacity: 0;
         }
-        #command-palette-overlay.visible #command-palette { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+
+        #command-palette-overlay.visible #command-palette {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
 
         #command-palette-input {
             width: 100%;
-            padding: 1rem 1.25rem;
-            font-size: 1rem;
+            padding: 1.5rem;
+            font-size: 1.1rem;
             border: none;
             outline: none;
             background-color: transparent;
@@ -239,126 +376,194 @@
         }
 
         #command-palette-list .item {
-            padding: 0.75rem 1.25rem;
+            padding: 1rem 1.5rem;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            transition: background-color 0.2s;
+            gap: 1rem;
+            transition: all 0.2s;
+            border-radius: 12px;
+            margin: 0.25rem;
         }
+
+        #command-palette-list .item:hover,
         #command-palette-list .item.selected {
-            background-color: rgba(from var(--accent-purple) r g b / 0.2);
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .liquid-glass {
+                border-radius: 16px;
+            }
+            
+            h1 {
+                font-size: 2.5rem !important;
+            }
+            
+            h2 {
+                font-size: 2rem !important;
+            }
         }
     </style>
 </head>
 
 <body class="min-h-screen">
-    <!-- 
-    ==================================================================
-    |                         BAGIAN HTML                            |
-    ==================================================================
-    -->
-    <!-- PERBAIKAN: Mengganti div menjadi canvas -->
-    <canvas id="three-canvas"></canvas>
+    <!-- Background Effects -->
+    <div class="background-gradient"></div>
+    <div class="sphere-glow"></div>
+    
+    <!-- 3D Canvas Container -->
+    <div id="canvas-container"></div>
+    
+    <!-- Floating Particles -->
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
 
+    <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
-        <i class="fas fa-satellite-dish text-gradient text-5xl animate-spin"></i>
+        <div class="text-center">
+            <i class="fas fa-atom text-6xl text-gradient animate-spin mb-4"></i>
+            <p class="text-xl text-gradient font-semibold">Loading Experience...</p>
+        </div>
     </div>
 
+    <!-- Notification Banner -->
     <div id="notification-banner"></div>
 
-    <!-- Command Palette Modal -->
+    <!-- Command Palette -->
     <div id="command-palette-overlay">
         <div id="command-palette" role="dialog" aria-modal="true">
-            <input type="text" id="command-palette-input" placeholder="Ketik perintah...">
+            <input type="text" id="command-palette-input" placeholder="Type a command...">
             <ul id="command-palette-list" role="listbox"></ul>
         </div>
     </div>
 
-    <header class="fixed top-0 left-0 right-0 p-4 sm:p-6 flex justify-end items-center gap-3 z-50">
-        <button id="lang-toggle" aria-label="Ganti Bahasa" class="glass-card w-16 text-sm font-semibold py-2 px-3 hover:!border-[var(--accent-purple)]">ID</button>
-        <button id="theme-toggle" aria-label="Toggle theme" class="glass-card p-3 aspect-square flex items-center justify-center hover:!border-[var(--accent-purple)]">
-            <i class="fas fa-moon"></i>
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 p-6 flex justify-end items-center gap-4 z-50">
+        <button id="lang-toggle" aria-label="Switch Language" 
+                class="liquid-glass w-16 text-sm font-semibold py-2 px-3 hover:scale-105">
+            ID
+        </button>
+        <button id="theme-toggle" aria-label="Toggle theme" 
+                class="liquid-glass p-3 aspect-square flex items-center justify-center hover:scale-105">
+            <i class="fas fa-moon text-lg"></i>
         </button>
     </header>
 
-    <main class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
-        <div class="space-y-24 md:space-y-32">
+    <!-- Main Content -->
+    <main class="relative z-10 max-w-6xl mx-auto px-6 py-32">
+        <div class="space-y-32">
 
-            <!-- BAGIAN 1: HERO -->
-            <section id="hero" class="text-center flex flex-col items-center scroll-animate min-h-[60vh] justify-center">
-                <div class="glass-card w-28 h-28 mb-8 flex items-center justify-center p-2">
-                    <i class="fas fa-meteor text-6xl text-gradient"></i>
+            <!-- Hero Section -->
+            <section id="hero" class="text-center flex flex-col items-center scroll-animate min-h-[70vh] justify-center">
+                <div class="liquid-glass w-32 h-32 mb-8 flex items-center justify-center">
+                    <i class="fas fa-rocket text-7xl text-gradient"></i>
                 </div>
-                <h1 data-lang-key="hero_name" class="text-5xl md:text-7xl">Devin Ramadhan</h1>
-                <p data-lang-key="hero_subtitle" class="text-xl md:text-2xl text-secondary mt-4">Pengembang Perangkat Lunak & Pembelajar Mandiri</p>
-                <p class="text-sm text-secondary mt-8" data-lang-key="command_prompt">Tekan <kbd class="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">Ctrl+K</kbd> untuk perintah</p>
+                <h1 data-lang-key="hero_name" class="text-6xl md:text-8xl mb-6 text-gradient">
+                    Devin Ramadhan
+                </h1>
+                <p data-lang-key="hero_subtitle" class="text-2xl md:text-3xl text-secondary mb-8 max-w-3xl">
+                    Pengembang Perangkat Lunak & Pembelajar Mandiri
+                </p>
+                <p class="text-lg text-secondary" data-lang-key="command_prompt">
+                    Tekan <kbd class="px-3 py-1 text-sm font-semibold bg-white/10 border border-white/20 rounded-lg backdrop-blur-sm">Ctrl+K</kbd> untuk membuka command palette
+                </p>
             </section>
 
-            <!-- BAGIAN 2: TENTANG SAYA -->
+            <!-- About Section -->
             <section id="about" class="scroll-animate">
-                <div class="glass-card p-8 md:p-12">
-                    <h2 data-lang-key="about_title" class="text-3xl md:text-4xl mb-6 text-gradient">Tentang Saya</h2>
-                    <p data-lang-key="about_desc" class="text-lg md:text-xl text-secondary leading-relaxed">
-                        Halo! Saya Depin, seorang programmer otodidak yang memulai perjalanan ini sejak 2017. Rasa ingin tahu adalah bahan bakar utama saya untuk terus belajar dan menjelajahi teknologi baru. Saya percaya pada kekuatan dedikasi dan kemungkinan tak terbatas yang datang dari pikiran yang selalu penasaran.
+                <div class="liquid-glass p-10 md:p-16">
+                    <h2 data-lang-key="about_title" class="text-4xl md:text-5xl mb-8 text-gradient">
+                        Tentang Saya
+                    </h2>
+                    <p data-lang-key="about_desc" class="text-xl md:text-2xl text-secondary leading-relaxed">
+                        Halo! Saya Depin, seorang programmer otodidak yang memulai perjalanan ini sejak 2017. 
+                        Rasa ingin tahu adalah bahan bakar utama saya untuk terus belajar dan menjelajahi teknologi baru. 
+                        Saya percaya pada kekuatan dedikasi dan kemungkinan tak terbatas yang datang dari pikiran yang selalu penasaran.
                     </p>
                 </div>
             </section>
 
-            <!-- BAGIAN 3: KEAHLIAN -->
+            <!-- Skills Section -->
             <section id="skills" class="scroll-animate">
-                <h2 data-lang-key="skills_title" class="text-3xl md:text-4xl text-center mb-12 text-gradient">Teknologi & Keahlian</h2>
-                <div id="skills-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-                    <!-- Kartu Keahlian akan dimasukkan oleh JS -->
+                <h2 data-lang-key="skills_title" class="text-4xl md:text-5xl text-center mb-16 text-gradient">
+                    Teknologi & Keahlian
+                </h2>
+                <div id="skills-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <!-- Skills will be populated by JavaScript -->
                 </div>
             </section>
             
-            <!-- BAGIAN 4: GITHUB -->
+            <!-- GitHub Section -->
             <section id="github" class="scroll-animate">
-                 <a href="https://github.com/depinrise" target="_blank" rel="noopener noreferrer" class="glass-card p-8 md:p-12 text-center group block">
-                    <div class="w-16 h-16 mx-auto mb-6 text-accent-purple transition-transform duration-300 group-hover:scale-110">
-                        <i class="fab fa-github text-6xl"></i>
+                <a href="https://github.com/depinrise" target="_blank" rel="noopener noreferrer" 
+                   class="liquid-glass p-12 md:p-16 text-center group block">
+                    <div class="w-20 h-20 mx-auto mb-8 text-gradient transition-transform duration-500 group-hover:scale-110 group-hover:rotate-12">
+                        <i class="fab fa-github text-8xl"></i>
                     </div>
-                    <h3 data-lang-key="github_title" class="text-3xl md:text-4xl mb-2">Jelajahi Kode Saya</h3>
-                    <p data-lang-key="github_desc" class="text-lg text-secondary mb-6 max-w-2xl mx-auto">Lihat semua proyek, eksperimen, dan kontribusi sumber terbuka saya di GitHub.</p>
-                    <span class="inline-block font-semibold text-lg text-accent-purple group">
+                    <h3 data-lang-key="github_title" class="text-4xl md:text-5xl mb-4 text-gradient">
+                        Jelajahi Kode Saya
+                    </h3>
+                    <p data-lang-key="github_desc" class="text-xl text-secondary mb-8 max-w-3xl mx-auto leading-relaxed">
+                        Lihat semua proyek, eksperimen, dan kontribusi sumber terbuka saya di GitHub.
+                    </p>
+                    <span class="inline-flex items-center font-semibold text-xl text-gradient group-hover:gap-4 transition-all duration-300">
                         <span data-lang-key="github_button">depinrise</span>
-                        <span class="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                        <span class="inline-block transition-transform duration-300 group-hover:translate-x-2 ml-2">→</span>
                     </span>
                 </a>
             </section>
 
-            <!-- BAGIAN 5: KONTAK -->
+            <!-- Contact Section -->
             <section id="contact" class="text-center scroll-animate">
-                <h2 data-lang-key="contact_title" class="text-3xl md:text-4xl mb-4 text-gradient">Hubungi Saya</h2>
-                <p data-lang-key="contact_desc" class="text-lg text-secondary mb-8 max-w-2xl mx-auto">Terbuka untuk diskusi, pertanyaan, atau peluang kolaborasi. Jangan ragu untuk menghubungi!</p>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a href="mailto:depinrise@proton.me" class="glass-card p-4 flex items-center gap-3 hover:!border-[var(--accent-purple)]">
-                        <i class="fas fa-envelope text-2xl text-accent-purple"></i>
-                        <span class="font-medium">Email</span>
+                <h2 data-lang-key="contact_title" class="text-4xl md:text-5xl mb-6 text-gradient">
+                    Hubungi Saya
+                </h2>
+                <p data-lang-key="contact_desc" class="text-xl text-secondary mb-12 max-w-3xl mx-auto leading-relaxed">
+                    Terbuka untuk diskusi, pertanyaan, atau peluang kolaborasi. Jangan ragu untuk menghubungi!
+                </p>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="mailto:depinrise@proton.me" class="liquid-glass p-6 flex items-center gap-4 text-lg font-medium hover:scale-105 transition-transform">
+                        <i class="fas fa-envelope text-3xl text-gradient"></i>
+                        <span>depinrise@proton.me</span>
                     </a>
                 </div>
             </section>
         </div>
     </main>
 
-    <footer class="py-12 text-center text-secondary text-sm mt-16">
-        <p data-lang-key="footer_text">— Dibuat dengan <i class="fas fa-heart text-accent-pink animate-pulse"></i> oleh Devin Ramadhan —</p>
+    <!-- Footer -->
+    <footer class="py-16 text-center text-secondary text-lg mt-24">
+        <p data-lang-key="footer_text" class="flex items-center justify-center gap-2">
+            — Dibuat dengan 
+            <i class="fas fa-heart text-gradient animate-pulse text-xl"></i> 
+            oleh Devin Ramadhan —
+        </p>
     </footer>
 
-    <!-- 
-    ==================================================================
-    |                       BAGIAN JAVASCRIPT                        |
-    ==================================================================
-    -->
+    <!-- JavaScript -->
     <script>
-    // Pastikan semua berjalan setelah DOM siap
     document.addEventListener('DOMContentLoaded', () => {
-
-        // ===================================================================================
-        // BAGIAN 1: STATE, ELEMEN, DAN DATA
-        // ===================================================================================
-        const state = { currentLang: 'id', currentTheme: 'light' };
+        // State Management
+        const state = { currentLang: 'id', currentTheme: 'dark' };
         const elements = {
             html: document.documentElement,
             themeToggle: document.getElementById('theme-toggle'),
@@ -366,7 +571,7 @@
             notificationBanner: document.getElementById('notification-banner'),
             scrollAnimateItems: document.querySelectorAll('.scroll-animate'),
             skillsContainer: document.getElementById('skills-container'),
-            threeCanvas: document.getElementById('three-canvas'),
+            canvasContainer: document.getElementById('canvas-container'),
             loadingScreen: document.getElementById('loading-screen'),
             commandPalette: {
                 overlay: document.getElementById('command-palette-overlay'),
@@ -376,41 +581,56 @@
             }
         };
 
+        // Translations
         const translations = {
             id: {
-                "lang_toggle": "EN", "hero_name": "Devin Ramadhan", "hero_subtitle": "Pengembang Perangkat Lunak & Pembelajar Mandiri",
-                "about_title": "Tentang Saya", "about_desc": "Halo! Saya Depin, seorang programmer otodidak yang memulai perjalanan ini sejak 2017. Rasa ingin tahu adalah bahan bakar utama saya untuk terus belajar dan menjelajahi teknologi baru. Saya percaya pada kekuatan dedikasi dan kemungkinan tak terbatas yang datang dari pikiran yang selalu penasaran.",
-                "skills_title": "Teknologi & Keahlian", "github_title": "Jelajahi Kode Saya", "github_desc": "Lihat semua proyek, eksperimen, dan kontribusi sumber terbuka saya di GitHub.",
-                "github_button": "depinrise", "contact_title": "Hubungi Saya", "contact_desc": "Terbuka untuk diskusi, pertanyaan, atau peluang kolaborasi. Jangan ragu untuk menghubungi!",
-                "footer_text": "— Dibuat dengan <i class='fas fa-heart text-accent-pink animate-pulse'></i> oleh Devin Ramadhan —", "notification_light": "Mode Cerah diaktifkan", "notification_dark": "Mode Gelap diaktifkan",
-                "command_prompt": "Tekan <kbd class='px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500'>Ctrl+K</kbd> untuk perintah"
+                "lang_toggle": "EN", "hero_name": "Devin Ramadhan", 
+                "hero_subtitle": "Pengembang Perangkat Lunak & Pembelajar Mandiri",
+                "about_title": "Tentang Saya", 
+                "about_desc": "Halo! Saya Depin, seorang programmer otodidak yang memulai perjalanan ini sejak 2017. Rasa ingin tahu adalah bahan bakar utama saya untuk terus belajar dan menjelajahi teknologi baru. Saya percaya pada kekuatan dedikasi dan kemungkinan tak terbatas yang datang dari pikiran yang selalu penasaran.",
+                "skills_title": "Teknologi & Keahlian", "github_title": "Jelajahi Kode Saya", 
+                "github_desc": "Lihat semua proyek, eksperimen, dan kontribusi sumber terbuka saya di GitHub.",
+                "github_button": "depinrise", "contact_title": "Hubungi Saya", 
+                "contact_desc": "Terbuka untuk diskusi, pertanyaan, atau peluang kolaborasi. Jangan ragu untuk menghubungi!",
+                "footer_text": "— Dibuat dengan <i class='fas fa-heart text-gradient animate-pulse text-xl'></i> oleh Devin Ramadhan —", 
+                "notification_light": "Mode Cerah diaktifkan", "notification_dark": "Mode Gelap diaktifkan",
+                "command_prompt": "Tekan <kbd class='px-3 py-1 text-sm font-semibold bg-white/10 border border-white/20 rounded-lg backdrop-blur-sm'>Ctrl+K</kbd> untuk membuka command palette"
             },
             en: {
-                "lang_toggle": "ID", "hero_name": "Devin Ramadhan", "hero_subtitle": "Software Developer & Self-Taught Learner",
-                "about_title": "About Me", "about_desc": "Hello! I'm Depin, a self-taught programmer who embarked on this journey in 2017. Curiosity is my main fuel for continuously learning and exploring new technologies. I believe in the power of dedication and the endless possibilities that come from an ever-curious mind.",
-                "skills_title": "Technologies & Skills", "github_title": "Explore My Code", "github_desc": "Check out all my projects, experiments, and open-source contributions on GitHub.",
-                "github_button": "depinrise", "contact_title": "Get In Touch", "contact_desc": "Open for discussions, questions, or collaboration opportunities. Feel free to reach out!",
-                "footer_text": "— Made with <i class='fas fa-heart text-accent-pink animate-pulse'></i> by Devin Ramadhan —", "notification_light": "Light Mode enabled", "notification_dark": "Dark Mode enabled",
-                "command_prompt": "Press <kbd class='px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500'>Ctrl+K</kbd> for commands"
+                "lang_toggle": "ID", "hero_name": "Devin Ramadhan", 
+                "hero_subtitle": "Software Developer & Self-Taught Learner",
+                "about_title": "About Me", 
+                "about_desc": "Hello! I'm Depin, a self-taught programmer who embarked on this journey in 2017. Curiosity is my main fuel for continuously learning and exploring new technologies. I believe in the power of dedication and the endless possibilities that come from an ever-curious mind.",
+                "skills_title": "Technologies & Skills", "github_title": "Explore My Code", 
+                "github_desc": "Check out all my projects, experiments, and open-source contributions on GitHub.",
+                "github_button": "depinrise", "contact_title": "Get In Touch", 
+                "contact_desc": "Open for discussions, questions, or collaboration opportunities. Feel free to reach out!",
+                "footer_text": "— Made with <i class='fas fa-heart text-gradient animate-pulse text-xl'></i> by Devin Ramadhan —", 
+                "notification_light": "Light Mode enabled", "notification_dark": "Dark Mode enabled",
+                "command_prompt": "Press <kbd class='px-3 py-1 text-sm font-semibold bg-white/10 border border-white/20 rounded-lg backdrop-blur-sm'>Ctrl+K</kbd> to open command palette"
             }
         };
 
+        // Skills Data
         const skillsData = [
-            { name: 'Python', icon: 'fab fa-python', color: 'text-accent-blue' }, { name: 'Go', icon: 'fab fa-golang', color: 'text-accent-blue' },
-            { name: 'JavaScript', icon: 'fab fa-js-square', color: 'text-accent-pink' }, { name: 'Next.js', icon: 'fab fa-react', color: 'text-accent-pink' },
-            { name: 'CSS', icon: 'fab fa-css3-alt', color: 'text-accent-purple' }, { name: 'Bash', icon: 'fas fa-terminal', color: 'text-accent-purple' },
-            { name: 'Docker', icon: 'fab fa-docker', color: 'text-accent-blue' }, { name: 'C++', icon: 'fas fa-c', color: 'text-accent-pink' }
+            { name: 'Python', icon: 'fab fa-python', gradient: 'from-blue-400 to-yellow-400' },
+            { name: 'Go', icon: 'fab fa-golang', gradient: 'from-blue-500 to-cyan-400' },
+            { name: 'JavaScript', icon: 'fab fa-js-square', gradient: 'from-yellow-400 to-orange-500' },
+            { name: 'React', icon: 'fab fa-react', gradient: 'from-blue-400 to-cyan-300' },
+            { name: 'CSS', icon: 'fab fa-css3-alt', gradient: 'from-blue-500 to-purple-500' },
+            { name: 'Node.js', icon: 'fab fa-node-js', gradient: 'from-green-400 to-green-600' },
+            { name: 'Docker', icon: 'fab fa-docker', gradient: 'from-blue-400 to-blue-600' },
+            { name: 'Git', icon: 'fab fa-git-alt', gradient: 'from-orange-500 to-red-500' }
         ];
 
-        // ===================================================================================
-        // BAGIAN 2: FUNGSI UTAMA & MANAJEMEN UI
-        // ===================================================================================
+        // UI Manager
         const uiManager = {
             showNotification(message) {
                 elements.notificationBanner.textContent = message;
                 elements.notificationBanner.classList.add('show');
-                setTimeout(() => { elements.notificationBanner.classList.remove('show'); }, 3000);
+                setTimeout(() => elements.notificationBanner.classList.remove('show'), 3000);
             },
+            
             switchLanguage(lang) {
                 state.currentLang = lang;
                 document.querySelectorAll('[data-lang-key]').forEach(el => {
@@ -420,172 +640,238 @@
                 elements.langToggle.textContent = translations[lang]['lang_toggle'];
                 localStorage.setItem('portfolio_lang', lang);
             },
+            
             switchTheme(theme) {
                 state.currentTheme = theme;
                 elements.html.className = theme;
-                elements.themeToggle.innerHTML = `<i class="fas ${theme === 'light' ? 'fa-moon' : 'fa-sun'}"></i>`;
+                elements.themeToggle.innerHTML = `<i class="fas ${theme === 'light' ? 'fa-moon' : 'fa-sun'} text-lg"></i>`;
                 localStorage.setItem('portfolio_theme', theme);
-                if (window.update3DColors) window.update3DColors();
             },
+            
             populateSkills() {
                 if (!elements.skillsContainer) return;
                 elements.skillsContainer.innerHTML = '';
                 skillsData.forEach(skill => {
                     const card = document.createElement('div');
-                    card.className = 'glass-card p-4 flex flex-col items-center justify-center gap-3 text-center';
-                    card.innerHTML = `<i class="${skill.icon} text-4xl ${skill.color}"></i><span class="font-medium text-secondary">${skill.name}</span>`;
+                    card.className = 'liquid-glass p-6 flex flex-col items-center justify-center gap-4 text-center hover:scale-105 transition-transform duration-300';
+                    card.innerHTML = `
+                        <i class="${skill.icon} text-5xl bg-gradient-to-r ${skill.gradient} bg-clip-text text-transparent"></i>
+                        <span class="font-semibold text-lg">${skill.name}</span>
+                    `;
                     elements.skillsContainer.appendChild(card);
                 });
             }
         };
 
-        // ===================================================================================
-        // BAGIAN 3: ANIMASI 3D (SATURNUS + PARTIKEL)
-        // ===================================================================================
+        // Enhanced 3D Background
         function init3DBackground() {
-            if (!elements.threeCanvas) return;
+            if (!elements.canvasContainer) return;
 
-            let scene, camera, renderer, saturnGroup, stars, particleSystem;
-            const mouse = new THREE.Vector2(0, 0);
-
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
-            camera.position.z = 10;
-
-            renderer = new THREE.WebGLRenderer({ canvas: elements.threeCanvas, alpha: true, antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-            // Grup Saturnus
-            saturnGroup = new THREE.Group();
-            scene.add(saturnGroup);
-
-            // Planet
-            const planetMaterial = new THREE.MeshStandardMaterial({
-                metalness: 0.3, roughness: 0.7 
-            });
-            const planet = new THREE.Mesh(new THREE.SphereGeometry(2, 64, 64), planetMaterial);
-            saturnGroup.add(planet);
-
-            // Cincin
-            const ringMaterial = new THREE.MeshBasicMaterial({
-                side: THREE.DoubleSide, transparent: true, opacity: 0.7
-            });
-            const ring = new THREE.Mesh(new THREE.RingGeometry(2.8, 4, 64), ringMaterial);
-            ring.rotation.x = Math.PI * 0.5;
-            saturnGroup.add(ring);
-            saturnGroup.rotation.x = 0.25;
-            saturnGroup.rotation.z = -0.1;
-
-            // Cahaya
-            scene.add(new THREE.AmbientLight(0xffffff, 0.7));
-            const pointLight = new THREE.PointLight(0xffffff, 1.2);
-            pointLight.position.set(10, 10, 10);
-            scene.add(pointLight);
-
-            // Partikel Debu Kosmik
-            const particleCount = 1500;
-            const particlePositions = new Float32Array(particleCount * 3);
-            for (let i = 0; i < particleCount; i++) {
-                particlePositions[i * 3 + 0] = (Math.random() - 0.5) * 30;
-                particlePositions[i * 3 + 1] = (Math.random() - 0.5) * 30;
-                particlePositions[i * 3 + 2] = (Math.random() - 0.5) * 30;
-            }
-            const particleGeometry = new THREE.BufferGeometry();
-            particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
-            const particleMaterial = new THREE.PointsMaterial({ size: 0.02, transparent: true });
-            particleSystem = new THREE.Points(particleGeometry, particleMaterial);
-            scene.add(particleSystem);
+            // Scene setup
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
             
-            // Bintang Jauh
-            const starVertices = [];
-            for (let i = 0; i < 10000; i++) {
-                const x = (Math.random() - 0.5) * 2000;
-                const y = (Math.random() - 0.5) * 2000;
-                const z = -Math.random() * 2000;
-                starVertices.push(x, y, z);
-            }
-            const starGeometry = new THREE.BufferGeometry();
-            starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
-            const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.7 });
-            stars = new THREE.Points(starGeometry, starMaterial);
-            scene.add(stars);
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0x000000, 0);
+            elements.canvasContainer.appendChild(renderer.domElement);
 
-            window.update3DColors = () => {
-                const style = getComputedStyle(document.documentElement);
-                planetMaterial.color.set(style.getPropertyValue('--accent-pink').trim());
-                ringMaterial.color.set(style.getPropertyValue('--accent-blue').trim());
-                particleMaterial.color.set(style.getPropertyValue('--accent-purple').trim());
-            };
-            window.update3DColors();
+            // Create enhanced sphere
+            const geometry = new THREE.SphereGeometry(2.5, 128, 128);
 
-            const clock = new THREE.Clock();
-            function animate() {
-                const elapsedTime = clock.getElapsedTime();
-                saturnGroup.rotation.y = elapsedTime * 0.1;
-                particleSystem.rotation.y = -elapsedTime * 0.05;
+            // Advanced shader material
+            const vertexShader = `
+                varying vec3 vPosition;
+                varying vec3 vNormal;
+                varying vec2 vUv;
+                uniform float time;
                 
-                gsap.to(camera.position, {
-                    x: mouse.x * 2,
-                    y: -mouse.y * 2,
-                    duration: 2,
-                    ease: 'power2.out'
-                });
-                camera.lookAt(scene.position);
+                void main() {
+                    vPosition = position;
+                    vNormal = normal;
+                    vUv = uv;
+                    
+                    vec3 newPosition = position;
+                    newPosition += normal * sin(time * 3.0 + position.x * 4.0) * 0.08;
+                    newPosition += normal * cos(time * 2.0 + position.y * 5.0) * 0.06;
+                    newPosition += normal * sin(time * 1.5 + position.z * 3.0) * 0.04;
+                    
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
+                }
+            `;
 
-                renderer.render(scene, camera);
+            const fragmentShader = `
+                varying vec3 vPosition;
+                varying vec3 vNormal;
+                varying vec2 vUv;
+                uniform float time;
+                
+                void main() {
+                    vec3 colorA = vec3(0.4, 0.5, 0.9);     // Blue
+                    vec3 colorB = vec3(0.46, 0.29, 0.64);  // Purple  
+                    vec3 colorC = vec3(0.94, 0.58, 0.98);  // Pink
+                    vec3 colorD = vec3(0.31, 0.67, 1.0);   // Light blue
+                    vec3 colorE = vec3(0.2, 0.8, 0.6);     // Green
+                    
+                    float mixValue1 = sin(vPosition.x * 3.0 + time * 1.5) * 0.5 + 0.5;
+                    float mixValue2 = cos(vPosition.y * 3.0 + time * 2.0) * 0.5 + 0.5;
+                    float mixValue3 = sin(vPosition.z * 3.0 + time * 1.2) * 0.5 + 0.5;
+                    
+                    vec3 color1 = mix(colorA, colorB, mixValue1);
+                    vec3 color2 = mix(colorC, colorD, mixValue2);
+                    vec3 finalColor = mix(color1, color2, mixValue3);
+                    finalColor = mix(finalColor, colorE, sin(time * 2.0 + vPosition.x) * 0.15 + 0.15);
+                    
+                    float fresnel = pow(1.0 - dot(normalize(vNormal), vec3(0.0, 0.0, 1.0)), 3.0);
+                    finalColor += fresnel * 0.4;
+                    
+                    float brightness = 0.9 + sin(time * 3.0) * 0.2;
+                    finalColor *= brightness;
+                    
+                    gl_FragColor = vec4(finalColor, 0.95);
+                }
+            `;
+
+            const material = new THREE.ShaderMaterial({
+                vertexShader,
+                fragmentShader,
+                uniforms: { time: { value: 0 } },
+                transparent: true,
+                side: THREE.DoubleSide
+            });
+
+            const sphere = new THREE.Mesh(geometry, material);
+            scene.add(sphere);
+
+            // Enhanced lighting
+            const ambientLight = new THREE.AmbientLight(0x404040, 0.4);
+            scene.add(ambientLight);
+
+            const keyLight = new THREE.DirectionalLight(0x667eea, 1.5);
+            keyLight.position.set(6, 10, 4);
+            keyLight.castShadow = true;
+            scene.add(keyLight);
+
+            const fillLight = new THREE.DirectionalLight(0xf093fb, 0.8);
+            fillLight.position.set(-4, 3, 6);
+            scene.add(fillLight);
+
+            const rimLight = new THREE.DirectionalLight(0x4facfe, 1.0);
+            rimLight.position.set(-3, -4, -6);
+            scene.add(rimLight);
+
+            // Colored point lights
+            const colorLights = [];
+            const lightColors = [0x764ba2, 0xf5576c, 0x4facfe, 0x43e97b];
+            lightColors.forEach((color, i) => {
+                const light = new THREE.PointLight(color, 1.2, 10);
+                light.position.set(
+                    Math.cos(i * Math.PI / 2) * 5,
+                    Math.sin(i * Math.PI / 2) * 3,
+                    Math.sin(i * Math.PI / 4) * 4
+                );
+                colorLights.push(light);
+                scene.add(light);
+            });
+
+            // Position camera
+            camera.position.set(3, 2, 8);
+
+            // Animation variables
+            let time = 0;
+            const clock = new THREE.Clock();
+            let mouseX = 0, mouseY = 0;
+
+            // Animation loop
+            function animate() {
                 requestAnimationFrame(animate);
+                
+                time = clock.getElapsedTime();
+                material.uniforms.time.value = time;
+                
+                // Enhanced sphere animations
+                sphere.rotation.x = Math.sin(time * 0.4) * 0.3;
+                sphere.rotation.y = time * 0.25;
+                sphere.rotation.z = Math.cos(time * 0.3) * 0.2;
+                
+                sphere.position.y = Math.sin(time * 0.6) * 0.5;
+                sphere.position.x = Math.cos(time * 0.4) * 0.3;
+                
+                const scale = 1 + Math.sin(time * 2) * 0.08;
+                sphere.scale.set(scale, scale, scale);
+                
+                // Animate colored lights
+                colorLights.forEach((light, i) => {
+                    const offset = i * Math.PI / 2;
+                    light.position.x = Math.cos(time * 0.7 + offset) * 6;
+                    light.position.y = Math.sin(time * 0.9 + offset) * 4;
+                    light.position.z = Math.cos(time * 0.5 + offset) * 5;
+                    light.intensity = 0.8 + Math.sin(time * 2 + offset) * 0.4;
+                });
+                
+                // Mouse interaction
+                camera.position.x = 3 + mouseX * 0.8;
+                camera.position.y = 2 + mouseY * 0.5;
+                camera.lookAt(sphere.position);
+                
+                renderer.render(scene, camera);
             }
 
+            // Event listeners
             window.addEventListener('resize', () => {
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
                 renderer.setSize(window.innerWidth, window.innerHeight);
             });
+
             document.addEventListener('mousemove', (event) => {
-                mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-                mouse.y = (event.clientY / window.innerHeight) * 2 - 1;
+                mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+                mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
             });
+
             animate();
         }
 
-        // ===================================================================================
-        // BAGIAN 4: FITUR INTERAKTIF (COMMAND PALETTE)
-        // ===================================================================================
+        // Command Manager
         const commandManager = {
-            commands: [],
+            commands: [
+                { name: 'Home', action: () => this.scrollToSection('hero'), icon: 'fa-home' },
+                { name: 'About', action: () => this.scrollToSection('about'), icon: 'fa-user' },
+                { name: 'Skills', action: () => this.scrollToSection('skills'), icon: 'fa-code' },
+                { name: 'GitHub', action: () => this.scrollToSection('github'), icon: 'fab fa-github' },
+                { name: 'Contact', action: () => this.scrollToSection('contact'), icon: 'fa-envelope' },
+                { name: 'Toggle Theme', action: () => elements.themeToggle.click(), icon: 'fa-adjust' },
+                { name: 'Toggle Language', action: () => elements.langToggle.click(), icon: 'fa-globe' }
+            ],
             selectedIndex: -1,
+
             init() {
-                this.commands = [
-                    { name: 'Home', action: () => this.scrollToSection('hero'), icon: 'fa-home' },
-                    { name: 'About', action: () => this.scrollToSection('about'), icon: 'fa-user' },
-                    { name: 'Skills', action: () => this.scrollToSection('skills'), icon: 'fa-code' },
-                    { name: 'GitHub', action: () => this.scrollToSection('github'), icon: 'fab fa-github' },
-                    { name: 'Contact', action: () => this.scrollToSection('contact'), icon: 'fa-envelope' },
-                    { name: 'Toggle Theme', action: () => elements.themeToggle.click(), icon: 'fa-adjust' },
-                    { name: 'Toggle Language', action: () => elements.langToggle.click(), icon: 'fa-globe' },
-                ];
                 elements.commandPalette.input.addEventListener('input', () => this.render());
                 elements.commandPalette.input.addEventListener('keydown', (e) => this.handleKeydown(e));
                 elements.commandPalette.overlay.addEventListener('click', (e) => {
                     if (e.target === elements.commandPalette.overlay) this.close();
                 });
             },
+
             open() {
                 elements.commandPalette.overlay.classList.add('visible');
                 elements.commandPalette.input.focus();
                 this.render();
             },
+
             close() {
                 elements.commandPalette.overlay.classList.remove('visible');
                 elements.commandPalette.input.value = '';
             },
+
             render() {
                 const filter = elements.commandPalette.input.value.toLowerCase();
                 const filtered = this.commands.filter(c => c.name.toLowerCase().includes(filter));
                 elements.commandPalette.list.innerHTML = filtered.map((cmd, index) => `
                     <li class="item" data-index="${index}">
-                        <i class="fas ${cmd.icon} w-4 text-center text-secondary"></i>
+                        <i class="fas ${cmd.icon} w-5 text-center"></i>
                         <span>${cmd.name}</span>
                     </li>
                 `).join('');
@@ -599,9 +885,11 @@
                 this.selectedIndex = -1;
                 this.updateSelection();
             },
+
             handleKeydown(e) {
                 const items = elements.commandPalette.list.querySelectorAll('.item');
                 if (!items.length) return;
+                
                 if (e.key === 'ArrowDown') {
                     e.preventDefault();
                     this.selectedIndex = (this.selectedIndex + 1) % items.length;
@@ -615,23 +903,23 @@
                 }
                 this.updateSelection();
             },
+
             updateSelection() {
                 elements.commandPalette.list.querySelectorAll('.item').forEach((item, index) => {
                     item.classList.toggle('selected', index === this.selectedIndex);
                 });
             },
+
             scrollToSection(id) {
                 const target = document.getElementById(id);
                 if (target) {
-                    const offsetTop = target.offsetTop - 80;
+                    const offsetTop = target.offsetTop - 100;
                     window.scrollTo({ top: offsetTop, behavior: 'smooth' });
                 }
             }
         };
 
-        // ===================================================================================
-        // BAGIAN 5: INISIALISASI UTAMA
-        // ===================================================================================
+        // Initialize Everything
         function initialize() {
             document.body.style.opacity = 0;
 
@@ -645,6 +933,7 @@
             init3DBackground();
             commandManager.init();
 
+            // Event listeners
             elements.themeToggle.addEventListener('click', () => {
                 const newTheme = state.currentTheme === 'light' ? 'dark' : 'light';
                 uiManager.switchTheme(newTheme);
@@ -656,6 +945,7 @@
                 uiManager.switchLanguage(newLang);
             });
 
+            // Scroll animations
             const scrollObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -663,9 +953,10 @@
                         scrollObserver.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.15 });
+            }, { threshold: 0.1 });
             elements.scrollAnimateItems.forEach(el => scrollObserver.observe(el));
             
+            // Command palette
             document.addEventListener('keydown', (e) => {
                 if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
                     e.preventDefault();
@@ -673,12 +964,13 @@
                 }
             });
 
+            // Loading screen
             window.addEventListener('load', () => {
                 setTimeout(() => {
                     elements.loadingScreen.classList.add('fade-out');
-                    document.body.style.transition = "opacity 0.8s ease";
+                    document.body.style.transition = "opacity 1s ease";
                     document.body.style.opacity = 1;
-                }, 500);
+                }, 1000);
             });
         }
 

@@ -15,22 +15,14 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@main
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@main
-        with:
-          node-version: 'lts/*'
-          
-      - name: Install dependencies
-        run: npm install
-        
-      - name: Build site
-        run: npm run build
         
       - name: Setup Pages
         uses: actions/configure-pages@main
@@ -38,15 +30,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@main
         with:
-          path: ./dist
+          path: ./me
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@main
